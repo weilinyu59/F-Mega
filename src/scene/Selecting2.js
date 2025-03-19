@@ -4,9 +4,11 @@ class Selecting2 extends Phaser.Scene {
     }
 
     init(data){
-        this.P1selectedCarIndex = data.P1selectedCarIndex
+        this.P1selectedCarIndex = data.P1selectedCarIndex //Get the selected car from the previous scene
     }
 
+
+    //Pretty much the same as the previous SelectingScene
     create() {
         this.cars = []
         this.carindex = 2

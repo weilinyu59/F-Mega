@@ -7,6 +7,7 @@ class Starting extends Phaser.Scene {
         this.load.path = './assets/'
         this.load.image('gamecover', 'cover.png')
 
+        // load car images with a for loop
         for(let i = 1; i <= 5; i++) {
             this.load.spritesheet(`car${i}`, `car-${i}.png`, {
                 frameWidth: 32,
@@ -14,6 +15,7 @@ class Starting extends Phaser.Scene {
             })
         }
 
+        // Other Loading assets
         this.load.image('selectingbox', 'selectingbox.png')
         
         this.load.bitmapFont('gem_font', 'font/gem.png', 'font/gem.xml')
@@ -38,6 +40,7 @@ class Starting extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
         this.enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 
+        // create animations for cars
         for (let i = 1; i <= 5; i++) {
             this.anims.create({
                 key: `LeftTurncar${i}`,
@@ -74,6 +77,7 @@ class Starting extends Phaser.Scene {
         }
     }
 
+    // fade away the cover after pressing enter
     fadeaway() {
         this.tweens.add({
             targets: this.cover,

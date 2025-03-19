@@ -6,6 +6,7 @@ class Selecting extends Phaser.Scene {
    
 
     create() {
+        //Setups for the car selection scene
         this.cars = []
         this.carindex = 2
         this.carSpacing = 150
@@ -22,12 +23,14 @@ class Selecting extends Phaser.Scene {
             this.cars.push(carSprites)
         })
 
+        //Texts for the car selection scene
         this.add.bitmapText(this.game.config.width/2, this.game.config.height/4, 'gem_font', 'P1 SELECT YOUR CAR', 32).setOrigin(0.5)
         this.add.bitmapText(this.game.config.width/2, this.game.config.height/1.4, 'gem_font', '<- -> to scroll', 16).setOrigin(0.5)
         this.add.bitmapText(this.game.config.width/2, this.game.config.height/1.3, 'gem_font', 'Press \'ENTER\' to select', 16).setOrigin(0.5)
 
         this.cursors = this.input.keyboard.createCursorKeys()
 
+        //Event listeners for the car selection
         this.input.keyboard.on('keydown-LEFT', () => this.moveSelection(-1))
         this.input.keyboard.on('keydown-RIGHT', () => this.moveSelection(1))
 
@@ -40,12 +43,13 @@ class Selecting extends Phaser.Scene {
             let P1selectedCarIndex = this.carKeys[this.carindex]
             this.sound.play('carselected')
             this.music.pause()
-            this.scene.start('P2SelectingScene', { P1selectedCarIndex })
+            this.scene.start('P2SelectingScene', { P1selectedCarIndex }) //Passing the selected car to the next scene
         })
 
     
     }
 
+    //Function to move the car selection
     moveSelection(direction) {
         let newindex = this.carindex + direction
         this.sound.play('carselecting')
